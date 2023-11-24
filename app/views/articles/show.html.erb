@@ -1,0 +1,29 @@
+<h1 class="text-5xl font-bold mb-4"><%= @article.title %></h1>
+
+<div class="mb-8">
+  <% if @article.poster.present? %>
+    <h2>Постер</h2>
+    <div class="photo-gallery">
+      <%= image_tag @article.poster.url, class: 'w-1/2 gallery-image' %>
+    </div>
+  <% else %>
+    <p>Постер не загружен</p>
+  <% end %>
+</div>
+
+<% if @article.photos.present? %>
+  <h2>Фото</h2>
+  <div class="photo-gallery">
+    <% @article.photos.each do |photo| %>
+      <%= image_tag photo.url, alt: 'Фотографии', class: 'gallery-image' %>
+    <% end %>
+  </div>
+<% end %>
+
+<p class="mb-8"><strong>Содержание:</strong> <%= @article.content %></p>
+
+<div class="mt-8">
+  <%= link_to 'Редактировать', edit_article_path(@article), class: 'border p-2' %>
+  <%= link_to 'Удалить', @article, class: 'display: inline', data: { "turbo-method": :delete } %> |
+  <%= link_to 'Назад', articles_path %>
+</div>

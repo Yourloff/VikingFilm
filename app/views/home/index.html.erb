@@ -1,0 +1,13 @@
+<h1 class="text-5xl font-bold mb-4">VikingFilm | Админ-панель</h1>
+
+<% if current_user %>
+<p class="text-gray-600 mb-8">Добро пожаловать <%= current_user.email %></p>
+
+  <%= link_to 'Фильмы', films_path, class: 'block' %>
+  <%= link_to 'Статьи', articles_path, class: 'block' %>
+<% end %>
+
+<div class="mt-8">
+  <%= render 'devise/shared/links' %>
+</div>
+

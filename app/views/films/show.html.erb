@@ -1,0 +1,35 @@
+<h1 class="text-5xl font-bold mb-4"><%= @film.title %></h1>
+
+<div class="mb-8">
+  <% if @film.poster.present? %>
+    <div class="photo-gallery">
+      <%= image_tag @film.poster.url, class: 'w-1/2' %>
+    </div>
+  <% else %>
+    <p>Постер не загружен</p>
+  <% end %>
+</div>
+
+<p><strong>Год:</strong> <%= @film.year %></p>
+<p><strong>Формат фильма:</strong> <%= @film.type_film %></p>
+<p><strong>Трейлер:</strong> <%= link_to @film.trailer, @film.trailer %></p>
+<p><strong>Режисёр:</strong> <%= @film.director %></p>
+<p><strong>Описание:</strong> <%= @film.description %></p>
+<p><strong>Жанр:</strong> <%= @film.genres.present? ? @film.genres.join(', ') : '' %></p>
+<p><strong>Актёры:</strong> <%= @film.actors.present? ? @film.actors.join(', ') : '' %></p>
+
+<% if @film.online_cinemas.present? %>
+  <p><strong>Онлайн кинотеатры:</strong></p>
+  <ul>
+    <% @film.online_cinemas.each do |cinema| %>
+      <li><%= cinema %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="mt-8">
+  <%= link_to 'Редактировать', edit_film_path(@film), class: 'border p-2' %>
+  <%= link_to 'Удалить', @film, class: 'display: inline', data: { "turbo-method": :delete } %> |
+  <%= link_to 'Назад', films_path %>
+</div>
+
