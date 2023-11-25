@@ -9,6 +9,6 @@
   },
   "scripts": {
     "start": "foreman start -f Procfile.dev",
-    "build": "esbuild --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets app/javascript/*.* && sass app/assets/stylesheets/application.tailwind.scss app/assets/builds/application.css"
+    "build": "esbuild --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets app/javascript/*.* && sass app/assets/stylesheets/application.tailwind.css app/assets/builds/application.css"
   }
 }
